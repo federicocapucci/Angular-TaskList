@@ -13,7 +13,7 @@ export class TareasComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.cargarTareas();
+    this.cargarTareas();  
   }
 
 

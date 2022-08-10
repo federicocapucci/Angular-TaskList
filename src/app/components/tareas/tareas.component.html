@@ -1,0 +1,25 @@
+<div class="container mt-5" (click)="cargarTareas()">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <input type="text" class="form-control form-control-lg" placeholder="Enter your task here..."
+                [(ngModel)]="nombreTarea" (keyup.enter)="agregarTarea()" />
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mt-3">
+            <div class="card p-2 text-center">
+                <h6 *ngIf="listTareas.length == 0">No tasks to show</h6>
+                <ul class="list-group" *ngIf="listTareas.length != 0">
+                    <li *ngFor="let tarea of listTareas; let i = index"
+                        class="list-group-item d-flex justify-content-between" [class.bg-light]="tarea.estado" [class.opacity-50]="tarea.estado">
+                        <span class="cursor" (click)="actualizarTarea(tarea, i)">
+                            <i [class.text-success]="tarea.estado" [ngClass]="tarea.estado ? 'fa-solid fa-circle-check': 'fa-regular fa-circle'"></i>
+                        </span>
+                         <span> {{ tarea.nombre }}</span>
+                        <span class="cursor text-danger" (click)="eliminarTarea(i)"><i
+                                class="fa-solid fa-trash"></i></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
